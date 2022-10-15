@@ -1,0 +1,11 @@
+
+
+
+
+Not Included but worth consideration.
+
+1. Throttling
+Application to use API key to distinguish users however throttling is an option where a queue based pattern where requests are stored and processed at a given rate.
+PRO - This approach does not reply on an API key to identify user (that the governance of has not been implemented).
+CON - This would throttle requests for all users not just individuals
+

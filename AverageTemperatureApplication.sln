@@ -14,6 +14,7 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "_Documentation", "_Documentation", "{A8AF7A13-B2C7-4F17-A0A6-A1FD479BB7BD}"
 	ProjectSection(SolutionItems) = preProject
 		E:\High_Level_Diagram.pdf = E:\High_Level_Diagram.pdf
+		NotesForConsideration.txt = NotesForConsideration.txt
 	EndProjectSection
 EndProject
 Global
