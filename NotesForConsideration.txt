@@ -1,11 +1,16 @@
-
-
-
-
-Not Included but worth consideration.
+For consideration.
 
 1. Throttling
 Application to use API key to distinguish users however throttling is an option where a queue based pattern where requests are stored and processed at a given rate.
 PRO - This approach does not reply on an API key to identify user (that the governance of has not been implemented).
 CON - This would throttle requests for all users not just individuals
 
+2. High Availability - Asynchronous Method 
+PRO - Asynchronous Method, runs in a thread separate from the main application thread freeing up the main thread.
+
+3. High Availability - Scope of Injected Dependencies
+PRO - Declaring the scope of the injected dependencies so that they are created as they are required.
+
+4. Caching to database 
+CON - data could be cached to memory, so that there is no dependency on database being avalible.
+PRO - if application is restarted cached data is not lost.

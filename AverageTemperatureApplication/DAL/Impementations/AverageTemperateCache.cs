@@ -1,4 +1,5 @@
 ﻿using AverageTemperatureApplication.DAL.Interfaces;
+using AverageTemperatureApplication.Database;
 using Models;
 
 namespace AverageTemperatureApplication.DAL.Impementations
