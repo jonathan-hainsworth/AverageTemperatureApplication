@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using AverageTemperatureApplication.Services.Interfaces;
+using Microsoft.AspNetCore.Mvc;
+using Models;
 
 namespace AverageTemperatureApplication.Controllers
 {
@@ -6,10 +8,17 @@ namespace AverageTemperatureApplication.Controllers
     [Route("[controller]")]
     public class AverageTemperatureController : ControllerBase
     {
-        [HttpGet(Name = "GetTemperature")]
-        public string Get()
+        private IAverageTemperatureService _averageTemperatureService;
+
+        public AverageTemperatureController(IAverageTemperatureService averageTemperatureService)
         {
-            return "todo";
+            _averageTemperatureService = averageTemperatureService;
+        }
+
+        [HttpGet(Name = "GetTemperatureLastFiveDays")]
+        public ActionResult<AverageTemperatureResponse> Get(double latitude, double longitude, Guid apiKey)
+        {
+            throw new NotImplementedException();
         }
     }
 }

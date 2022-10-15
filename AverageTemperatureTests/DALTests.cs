@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace AverageTemperatureTests
 {
-    internal class DALTests
+    public class DALTests
     {
     }
 }

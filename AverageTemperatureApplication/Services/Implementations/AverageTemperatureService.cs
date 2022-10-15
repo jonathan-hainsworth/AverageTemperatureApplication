@@ -20,7 +20,12 @@ namespace AverageTemperatureApplication.Services.Implementations
             _averageTemperatureSourceB = averageTemperatureSourceB;
         }
 
-        public AverageTemperature getAverageTemperature()
+        public AverageTemperatureResponse GetAverageTemperature(double latitude, double longitude, Guid apiKey)
+        {
+            throw new NotImplementedException();
+        }
+
+        private bool HasRequestLimitBeenReached()
         {
             throw new NotImplementedException();
         }
