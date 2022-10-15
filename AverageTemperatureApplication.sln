@@ -3,9 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.1.32328.378
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AverageTemperatureApplication", "AverageTemperatureApplication\AverageTemperatureApplication.csproj", "{19D80783-0680-4265-AC95-80A08D7EB6C2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AverageTemperatureApplication", "AverageTemperatureApplication\AverageTemperatureApplication.csproj", "{19D80783-0680-4265-AC95-80A08D7EB6C2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Models", "Models\Models.csproj", "{FBD83E11-3FB9-4DA7-B519-88EE826E48E4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Models", "Models\Models.csproj", "{FBD83E11-3FB9-4DA7-B519-88EE826E48E4}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "AverageTemperatureTests", "AverageTemperatureTests", "{990E8A7B-EB91-43B6-9680-AE931574652A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AverageTemperatureTests", "AverageTemperatureTests\AverageTemperatureTests.csproj", "{87ADC86A-805E-4832-8B7E-53F34431231D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,9 +25,16 @@ Global
 		{FBD83E11-3FB9-4DA7-B519-88EE826E48E4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FBD83E11-3FB9-4DA7-B519-88EE826E48E4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FBD83E11-3FB9-4DA7-B519-88EE826E48E4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{87ADC86A-805E-4832-8B7E-53F34431231D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{87ADC86A-805E-4832-8B7E-53F34431231D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{87ADC86A-805E-4832-8B7E-53F34431231D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{87ADC86A-805E-4832-8B7E-53F34431231D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{87ADC86A-805E-4832-8B7E-53F34431231D} = {990E8A7B-EB91-43B6-9680-AE931574652A}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {2D70F9CC-0FBE-4870-8F2E-EAF9632D23FF}
