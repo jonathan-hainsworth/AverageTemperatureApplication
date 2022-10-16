@@ -1,5 +1,8 @@
 ﻿using AverageTemperatureApplication.DAL.Impementations;
+using AverageTemperatureApplication.Database;
+using Microsoft.EntityFrameworkCore;
 using Models;
+using Moq;
 using NUnit.Framework;
 using System;
 using System.Diagnostics;
@@ -8,6 +11,8 @@ namespace AverageTemperatureTests
 {
     public class DALCacheTests
     {
+        private Mock<AverageTemperatureContext> _averageTemperatureDBContext = new Mock<AverageTemperatureContext>();
+
         [Test]
         public void SuccesfullyGetDataFromCache()
         {
@@ -27,8 +32,17 @@ namespace AverageTemperatureTests
                 isSuccessfull = true,
             };
 
+            /*_averageTemperatureDBContext.Setup(x => x.Set<CachedTemperatures>).Returns(
+                    new CachedTemperatures
+                    {
+                        Temperature = 10.2
+                    }
+                );*/
+
+            var mockInstance = new AverageTemperateCache(_averageTemperatureDBContext.Object);
+
             // Assert
-            var result = new AverageTemperateCache().GetAverageTemperature(latitude, longitude, endDate);
+            var result = mockInstance.GetAverageTemperature(latitude, longitude, endDate);
 
             // Act
             Debug.Assert(result.Result.Temperature==5.5);
@@ -52,8 +66,10 @@ namespace AverageTemperatureTests
                 isSuccessfull = false,
             };
 
+            var mockInstance = new AverageTemperateCache(_averageTemperatureDBContext.Object);
+
             // Assert
-            var result = new AverageTemperateCache().GetAverageTemperature(latitude, longitude, endDate);
+            var result = mockInstance.GetAverageTemperature(latitude, longitude, endDate);
 
             // Act
             Debug.Assert(false);

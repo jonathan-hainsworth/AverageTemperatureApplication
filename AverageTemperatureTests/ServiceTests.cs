@@ -15,13 +15,6 @@ namespace AverageTemperatureTests
         private Mock<IAverageTemperateCache> _averageTemperateCache = new Mock<IAverageTemperateCache>();
         private Mock<IAverageTemperatureSource> _averageTemperatureSource = new Mock<IAverageTemperatureSource>();
 
-        /*[TestInitialize]
-        public void SetUp()
-        {
-            _averageTemperateCache = new Mock<IAverageTemperateCache>();
-            _averageTemperatureSource = new Mock<IAverageTemperatureSource>();
-        }*/
-
         [Test]
         public void GetAverageTemperatureFromCache()
         {

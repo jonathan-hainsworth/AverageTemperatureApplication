@@ -16,13 +16,12 @@ PRO - High Availability: Declaring the scope of the injected dependencies so tha
 CON - data could be cached to memory, so that there is no dependency on database being avalible.
 PRO - if application is restarted cached data is not lost.
 
-
-
--- Should include
-* Something that clears the cache, only 5 days of data is required
+-- To include
+* Function that clears the cache, only 5 days of data is required
 * Mapping between Objects
 * Exceptions could be thrown as they occur, e.g. when results are unavalible, and handled on the pipeline creating proper thin controller
 * Validation when requests are out of 5 day period
+* Cancelation Token as part of asyncronous requests
 
 --Issues
 Getting data back from OpenWeatherAPI for historical data, I am able to get other types of weather back using Postman but recieve 401 for this the end point in the form:
