@@ -10,6 +10,5 @@ namespace AverageTemperatureApplication.Database
         }
 
         public DbSet<CachedTemperatures> CachedTemperatures { get; set; }
-        public DbSet<UserApiKeys> UserApiKeys { get; set; }
     }
 }

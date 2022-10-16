@@ -4,6 +4,8 @@ namespace AverageTemperatureApplication.DAL.Interfaces
 {
     public interface IAverageTemperateCache
     {
-        public AverageTemperature GetAverageTemperature(double latitude, double longitude, DateOnly EndDay);
+        public Task<AverageTemperature> GetAverageTemperature(double latitude, double longitude, DateOnly EndDay);
+
+        public void Task<CacheAverageTemperature>(AverageTemperature averageTemperature);
     }
 }

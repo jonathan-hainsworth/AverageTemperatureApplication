@@ -36,10 +36,10 @@ namespace AverageTemperatureTests
                 EndDay = DateOnly.FromDateTime(new DateTime().AddDays(-5))
             };
 
-            _averageTemperateCache.Setup(x => x.GetAverageTemperature(
+            /*_averageTemperateCache.Setup(x => x.GetAverageTemperature(
                 It.IsAny<double>(), 
                 It.IsAny<double>(),
-                It.IsAny<Guid>())).Returns(serviceResponse);
+                It.IsAny<Guid>())).Returns(serviceResponse);*/
 
             var instance = new AverageTemperatureController(_averageTemperateCache.Object);
 

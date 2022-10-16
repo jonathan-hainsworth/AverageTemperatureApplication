@@ -8,24 +8,16 @@ namespace AverageTemperatureApplication.Services.Implementations
     {
         private IAverageTemperateCache _averageTemperateCache;
         private IAverageTemperatureSource _averageTemperatureSourceA;
-        private IAverageTemperatureSourceB _averageTemperatureSourceB;
 
         public AverageTemperatureService(
             IAverageTemperateCache averageTemperateCache,
-            IAverageTemperatureSource averageTemperatureSourceA,
-            IAverageTemperatureSourceB averageTemperatureSourceB)
+            IAverageTemperatureSource averageTemperatureSourceA)
         {
             _averageTemperateCache = averageTemperateCache;
             _averageTemperatureSourceA = averageTemperatureSourceA;
-            _averageTemperatureSourceB = averageTemperatureSourceB;
         }
 
-        public AverageTemperatureResponse GetAverageTemperature(double latitude, double longitude, Guid apiKey)
-        {
-            throw new NotImplementedException();
-        }
-
-        private bool HasRequestLimitBeenReached()
+        public async Task<AverageTemperatureResponse> GetAverageTemperature(double latitude, double longitude, Guid apiKey)
         {
             throw new NotImplementedException();
         }

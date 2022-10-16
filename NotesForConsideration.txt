@@ -14,3 +14,8 @@ PRO - High Availability: Declaring the scope of the injected dependencies so tha
 4. Caching to database 
 CON - data could be cached to memory, so that there is no dependency on database being avalible.
 PRO - if application is restarted cached data is not lost.
+
+
+
+-- Could include
+Something that clears the cache, only 5 days of data is required

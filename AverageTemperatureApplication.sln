@@ -9,11 +9,12 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Models", "Models\Models.csp
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "AverageTemperatureTests", "AverageTemperatureTests", "{990E8A7B-EB91-43B6-9680-AE931574652A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AverageTemperatureTests", "AverageTemperatureTests\AverageTemperatureTests.csproj", "{87ADC86A-805E-4832-8B7E-53F34431231D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AverageTemperatureTests", "AverageTemperatureTests\AverageTemperatureTests.csproj", "{87ADC86A-805E-4832-8B7E-53F34431231D}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "_Documentation", "_Documentation", "{A8AF7A13-B2C7-4F17-A0A6-A1FD479BB7BD}"
 	ProjectSection(SolutionItems) = preProject
 		E:\High_Level_Diagram.pdf = E:\High_Level_Diagram.pdf
+		E:\High_Level_Diagram_Revised.pdf = E:\High_Level_Diagram_Revised.pdf
 		NotesForConsideration.txt = NotesForConsideration.txt
 	EndProjectSection
 EndProject

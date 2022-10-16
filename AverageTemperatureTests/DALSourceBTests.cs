@@ -32,7 +32,7 @@ namespace AverageTemperatureTests
             };
 
             // Assert
-            var result = new AverageTemperatureSourceB().GetAverageTemperature(latitude, longitude, endDate);
+            var result = new AverageTemperatureSource().GetAverageTemperature(latitude, longitude, endDate);
 
             // Act
             Debug.Assert(false);
@@ -58,7 +58,7 @@ namespace AverageTemperatureTests
             };
 
             // Assert
-            var result = new AverageTemperatureSourceB().GetAverageTemperature(latitude, longitude, endDate);
+            var result = new AverageTemperatureSource().GetAverageTemperature(latitude, longitude, endDate);
 
             // Act
             Debug.Assert(false);
