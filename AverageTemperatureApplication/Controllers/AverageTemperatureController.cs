@@ -24,10 +24,7 @@ namespace AverageTemperatureApplication.Controllers
             {
                 return Ok(averageTemperature);
             }
-            else
-            {
-                return StatusCode(500);
-            }
+            return StatusCode(404,"Unable to retrieve data");
         }
     }
 }

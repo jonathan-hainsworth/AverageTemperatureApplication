@@ -29,10 +29,6 @@ namespace AverageTemperatureApplication.Services.Implementations
             {
                 return convertToResponse(fiveDaysAverageTemperature);
             }
-            else
-            {
-                fiveDaysAverageTemperature = await _averageTemperateCache.GetAverageTemperature(latitude, longitude, dateOnly);
-            }
 
             fiveDaysAverageTemperature = await _averageTemperatureSource.GetAverageTemperature(latitude, longitude, dateOnly);
 
