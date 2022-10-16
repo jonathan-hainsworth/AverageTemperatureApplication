@@ -25,25 +25,23 @@ namespace AverageTemperatureApplication.Services.Implementations
 
             fiveDaysAverageTemperature = await _averageTemperateCache.GetAverageTemperature(latitude, longitude, dateOnly);
 
-            if(fiveDaysAverageTemperature == null)
-            {
-                fiveDaysAverageTemperature = await _averageTemperateCache.GetAverageTemperature(latitude, longitude, dateOnly);
-            }
-            else
+            if(fiveDaysAverageTemperature.isSuccessfull)
             {
                 return convertToResponse(fiveDaysAverageTemperature);
             }
-
-            if (fiveDaysAverageTemperature == null)
-            {
-                return null;
-            }
             else
             {
-                _averageTemperateCache.CacheAverageTemperature(fiveDaysAverageTemperature);
+                fiveDaysAverageTemperature = await _averageTemperateCache.GetAverageTemperature(latitude, longitude, dateOnly);
             }
 
-            return convertToResponse(fiveDaysAverageTemperature);
+            fiveDaysAverageTemperature = await _averageTemperatureSource.GetAverageTemperature(latitude, longitude, dateOnly);
+
+            if (fiveDaysAverageTemperature.isSuccessfull)
+            {
+                _averageTemperateCache.CacheAverageTemperature(fiveDaysAverageTemperature);
+                return convertToResponse(fiveDaysAverageTemperature);
+            }
+            return null;
         }
 
         // note: this should be private
@@ -57,6 +55,7 @@ namespace AverageTemperatureApplication.Services.Implementations
         {
             return new AverageTemperatureResponse
             {   
+                Temperature = averageTemperature.Temperature,
                 StartDay = averageTemperature.StartDay,
                 EndDay = averageTemperature.EndDay,
                 Latitude = averageTemperature.Latitude,
