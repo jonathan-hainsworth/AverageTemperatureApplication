@@ -9,6 +9,6 @@ namespace AverageTemperatureApplication.Database
 
         }
 
-        public DbSet<CachedTemperatures> CachedTemperatures { get; set; }
+        public virtual DbSet<CachedTemperatures> CachedTemperatures { get; set; }
     }
 }

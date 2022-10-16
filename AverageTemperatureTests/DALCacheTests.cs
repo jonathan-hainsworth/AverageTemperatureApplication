@@ -5,7 +5,9 @@ using Models;
 using Moq;
 using NUnit.Framework;
 using System;
+using System.Collections.Generic;
 using System.Diagnostics;
+using System.Linq;
 
 namespace AverageTemperatureTests
 {
@@ -19,30 +21,29 @@ namespace AverageTemperatureTests
             // Arrange
             double latitude = 55.9486;
             double longitude = 3.1999;
-            DateOnly endDate = new DateOnly(2022,10,15);
+            DateTime endDate = new DateTime(2022,10,15);
+            DateOnly dateOnlyendDate = new DateOnly(2022, 10, 15);
             DateOnly startDate = new DateOnly(2022, 10, 10);
 
-            var DalResponse = new AverageTemperature
+            var data = new List<CachedTemperatures>
             {
-                Temperature = 5.5,
-                Latitude = latitude,
-                Longitude = longitude,
-                StartDay = startDate,
-                EndDay = endDate,
-                isSuccessfull = true,
-            };
+                new CachedTemperatures
+                {
+                    Temperature = 5.5,
+                    Latitude = latitude,
+                    Longitude = longitude,
+                    Day = endDate
+                }
+            }.AsQueryable();
 
-            /*_averageTemperatureDBContext.Setup(x => x.Set<CachedTemperatures>).Returns(
-                    new CachedTemperatures
-                    {
-                        Temperature = 10.2
-                    }
-                );*/
+            Mock<DbSet<CachedTemperatures>> mockSet = new Mock<DbSet<CachedTemperatures>>();
+            mockSet.As<IQueryable<CachedTemperatures>>().Setup(x => x.Expression).Returns(data.Expression);
 
-            var mockInstance = new AverageTemperateCache(_averageTemperatureDBContext.Object);
+            Mock<AverageTemperatureContext> mockContext = new Mock<AverageTemperatureContext>();
+            mockContext.Setup(c => c.CachedTemperatures).Returns(mockSet.Object);
 
-            // Assert
-            var result = mockInstance.GetAverageTemperature(latitude, longitude, endDate);
+            var service = new AverageTemperateCache(mockContext.Object); // error here
+            var result = service.GetAverageTemperature(latitude, longitude, dateOnlyendDate);
 
             // Act
             Debug.Assert(result.Result.Temperature==5.5);
