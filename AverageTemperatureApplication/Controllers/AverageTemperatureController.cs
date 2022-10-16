@@ -16,9 +16,9 @@ namespace AverageTemperatureApplication.Controllers
         }
 
         [HttpGet(Name = "GetTemperatureLastFiveDays")]
-        public ActionResult<AverageTemperatureResponse> Get(double latitude, double longitude, Guid apiKey)
+        public ActionResult<AverageTemperatureResponse> Get(double latitude, double longitude)
         {
-            throw new NotImplementedException();
+            return Ok(_averageTemperatureService.GetAverageTemperature(latitude, longitude));
         }
     }
 }

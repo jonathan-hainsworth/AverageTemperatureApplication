@@ -6,7 +6,7 @@ using System.Diagnostics;
 
 namespace AverageTemperatureTests
 {
-    public class DALSourceATests
+    public class DALSourceTests
     {
         [Test]
         public void SuccesfullyGetDataFromSourceA()

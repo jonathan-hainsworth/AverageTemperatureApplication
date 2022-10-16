@@ -44,7 +44,7 @@ namespace AverageTemperatureTests
             var instance = new AverageTemperatureController(_averageTemperateCache.Object);
 
             //Assert
-            var result = instance.Get(latitude, longitude, apiKey);
+            var result = instance.Get(latitude, longitude);
 
             //Act
             //Assert StatusCode Type

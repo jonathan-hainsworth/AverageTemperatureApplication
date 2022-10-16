@@ -4,6 +4,7 @@ For consideration.
 Application to use API key to distinguish users however throttling is an option where a queue based pattern where requests are stored and processed at a given rate.
 PRO - This approach does not reply on an API key to identify user (that the governance of has not been implemented).
 CON - This would throttle requests for all users not just individuals
+Update: Now planning to implement a queue as users are require to be anonymous
 
 2. Asynchronous Method 
 PRO - High Availability: Asynchronous Method, runs in a thread separate from the main application thread freeing up the main thread.
@@ -19,3 +20,9 @@ PRO - if application is restarted cached data is not lost.
 
 -- Could include
 Something that clears the cache, only 5 days of data is required
+
+--Issues
+Getting data back from OpenWeatherAPI for historical data, I am able to get other types of weather back using Postman but recieve 401 for this the end point in the form:
+https://api.openweathermap.org/data/2.5/onecall?lat={lat}&lon={lon}&exclude={part}&appid={API key}
+Example:
+https://history.openweathermap.org/data/2.5/history/city?lat=41.85&lon=-87.65&appid=c17ae807448f524baf0886ec7a6ee03c

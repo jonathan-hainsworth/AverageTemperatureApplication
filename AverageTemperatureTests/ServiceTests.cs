@@ -1,6 +1,5 @@
 using AverageTemperatureApplication.DAL.Interfaces;
 using AverageTemperatureApplication.Services.Implementations;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Models;
 using Moq;
 using NUnit.Framework;
@@ -13,14 +12,14 @@ namespace AverageTemperatureTests
     [TestFixture]
     public class ServiceTests
     {
-        private Mock<Task<IAverageTemperateCache>> _averageTemperateCache = new Mock<Task<IAverageTemperateCache>>();
-        private Mock<Task<IAverageTemperatureSource>> _averageTemperatureSource = new Mock<Task<IAverageTemperatureSource>>();
+        private Mock<IAverageTemperateCache> _averageTemperateCache = new Mock<IAverageTemperateCache>();
+        private Mock<IAverageTemperatureSource> _averageTemperatureSource = new Mock<IAverageTemperatureSource>();
 
         /*[TestInitialize]
         public void SetUp()
         {
-            _averageTemperateCache = new Mock<Task<IAverageTemperateCache>>();
-            _averageTemperatureSource = new Mock<Task<IAverageTemperatureSource>>();
+            _averageTemperateCache = new Mock<IAverageTemperateCache>();
+            _averageTemperatureSource = new Mock<IAverageTemperatureSource>();
         }*/
 
         [Test]
@@ -29,7 +28,7 @@ namespace AverageTemperatureTests
             //Arrange
             double latitude = 55.9486;
             double longitude = 3.1999;
-            Guid apiKey = Guid.NewGuid();
+            DateOnly dateOnly = new DateOnly();
 
             var cacheResponse = new AverageTemperature
             {
@@ -42,32 +41,31 @@ namespace AverageTemperatureTests
                 isSuccessfull = true
             };
 
-
-            /*_averageTemperatureSource.Setup(x => x.GetAverageTemperature(
+            _averageTemperateCache.Setup(x => x.GetAverageTemperature(
                 It.IsAny<double>(),
                 It.IsAny<double>(),
-                It.IsAny<DateOnly>())).ReturnAsync(cacheResponse);
+                It.IsAny<DateOnly>())).Returns(Task.FromResult(cacheResponse));
 
-            var instance = new AverageTemperatureService(
+            var mockInstance = new AverageTemperatureService(
                 _averageTemperateCache.Object,
-                _averageTemperatureSource.Object);*/
+                _averageTemperatureSource.Object);
 
             //Assert
-            //var result = instance.GetAverageTemperature(latitude, longitude, apiKey);
+            var result = mockInstance.GetAverageTemperature(latitude, longitude);
 
             //Act
-            /*Debug.Assert(result.Temperature == 5.5);
-            Debug.Assert(result.Latitude == latitude);
-            Debug.Assert(result.Longitude == longitude);*/
+            Debug.Assert(result.Result.Temperature == 5.5);
+            Debug.Assert(result.Result.Latitude == latitude);
+            Debug.Assert(result.Result.Longitude == longitude);
         }
 
         [Test]
         public void GetAverageTemperatureFromDataSourceA()
         {
             //Arrange
-            /*double latitude = 55.9486;
+            double latitude = 55.9486;
             double longitude = 3.1999;
-            Guid apiKey = Guid.NewGuid();
+            DateOnly dateOnly = new DateOnly();
 
             // cache
             var cacheResponse = new AverageTemperature
@@ -83,9 +81,9 @@ namespace AverageTemperatureTests
             _averageTemperateCache.Setup(x => x.GetAverageTemperature(
                 It.IsAny<double>(),
                 It.IsAny<double>(),
-                It.IsAny<DateOnly>())).ReturnAsync(cacheResponse);
+                It.IsAny<DateOnly>())).Returns(Task.FromResult(cacheResponse));
 
-            // dataSourceA
+            // dataSource
             var dataSourceAResponse = new AverageTemperature
             {
                 Temperature = 2.5,
@@ -99,7 +97,7 @@ namespace AverageTemperatureTests
             _averageTemperatureSource.Setup(x => x.GetAverageTemperature(
                 It.IsAny<double>(),
                 It.IsAny<double>(),
-                It.IsAny<DateOnly>())).Returns(dataSourceAResponse);
+                It.IsAny<DateOnly>())).Returns(Task.FromResult(dataSourceAResponse));
 
 
             var instance = new AverageTemperatureService(
@@ -107,12 +105,12 @@ namespace AverageTemperatureTests
                 _averageTemperatureSource.Object);
 
             //Assert
-            var result = instance.GetAverageTemperature(latitude, longitude, apiKey);
+            var result = instance.GetAverageTemperature(latitude, longitude);
 
             //Act
-            Debug.Assert(result.Temperature == 2.5);
-            Debug.Assert(result.Latitude == latitude);
-            Debug.Assert(result.Longitude == longitude);*/
+            Debug.Assert(result.Result.Temperature == 2.5);
+            Debug.Assert(result.Result.Latitude == latitude);
+            Debug.Assert(result.Result.Longitude == longitude);
         }
     }
 }
