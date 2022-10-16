@@ -5,11 +5,11 @@ Application to use API key to distinguish users however throttling is an option 
 PRO - This approach does not reply on an API key to identify user (that the governance of has not been implemented).
 CON - This would throttle requests for all users not just individuals
 
-2. High Availability - Asynchronous Method 
-PRO - Asynchronous Method, runs in a thread separate from the main application thread freeing up the main thread.
+2. Asynchronous Method 
+PRO - High Availability: Asynchronous Method, runs in a thread separate from the main application thread freeing up the main thread.
 
-3. High Availability - Scope of Injected Dependencies
-PRO - Declaring the scope of the injected dependencies so that they are created as they are required.
+3. Scope of Injected Dependencies
+PRO - High Availability: Declaring the scope of the injected dependencies so that they are created as they are required.
 
 4. Caching to database 
 CON - data could be cached to memory, so that there is no dependency on database being avalible.

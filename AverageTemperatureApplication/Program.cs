@@ -9,7 +9,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddTransient<IAverageTemperateCache, AverageTemperateCache>();
-builder.Services.AddTransient<IAverageTemperatureSourceA, AverageTemperatureSourceA>();
+builder.Services.AddTransient<IAverageTemperatureSource, AverageTemperatureSource>();
 builder.Services.AddTransient<IAverageTemperatureSourceB, AverageTemperatureSourceB>();
 
 builder.Services.AddScoped<IAverageTemperatureService, AverageTemperatureService>();

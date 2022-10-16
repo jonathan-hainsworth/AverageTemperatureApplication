@@ -4,7 +4,7 @@ using System.Net;
 
 namespace AverageTemperatureApplication.DAL.Impementations
 {
-    public class AverageTemperatureSourceA : IAverageTemperatureSourceA
+    public class AverageTemperatureSource : IAverageTemperatureSource
     {
         public AverageTemperature GetAverageTemperature(double latitude, double longitude, DateOnly EndDay)
         {

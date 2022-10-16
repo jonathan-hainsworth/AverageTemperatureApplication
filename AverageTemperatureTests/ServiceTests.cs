@@ -12,7 +12,7 @@ namespace AverageTemperatureTests
     public class ServiceTests
     {
         private readonly Mock<IAverageTemperateCache> _averageTemperateCache = new Mock<IAverageTemperateCache>();
-        private readonly Mock<IAverageTemperatureSourceA> _averageTemperatureSourceA = new Mock<IAverageTemperatureSourceA>();
+        private readonly Mock<IAverageTemperatureSource> _averageTemperatureSourceA = new Mock<IAverageTemperatureSource>();
         private readonly Mock<IAverageTemperatureSourceB> _averageTemperatureSourceB = new Mock<IAverageTemperatureSourceB>();
 
         [Test]

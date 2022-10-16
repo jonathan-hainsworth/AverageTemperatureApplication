@@ -7,12 +7,12 @@ namespace AverageTemperatureApplication.Services.Implementations
     public class AverageTemperatureService : IAverageTemperatureService
     {
         private IAverageTemperateCache _averageTemperateCache;
-        private IAverageTemperatureSourceA _averageTemperatureSourceA;
+        private IAverageTemperatureSource _averageTemperatureSourceA;
         private IAverageTemperatureSourceB _averageTemperatureSourceB;
 
         public AverageTemperatureService(
             IAverageTemperateCache averageTemperateCache,
-            IAverageTemperatureSourceA averageTemperatureSourceA,
+            IAverageTemperatureSource averageTemperatureSourceA,
             IAverageTemperatureSourceB averageTemperatureSourceB)
         {
             _averageTemperateCache = averageTemperateCache;

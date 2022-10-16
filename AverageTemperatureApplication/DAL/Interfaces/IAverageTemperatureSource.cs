@@ -2,7 +2,7 @@
 
 namespace AverageTemperatureApplication.DAL.Interfaces
 {
-    public interface IAverageTemperatureSourceB
+    public interface IAverageTemperatureSource
     {
         public AverageTemperature GetAverageTemperature(double latitude, double longitude, DateOnly EndDay);
     }
