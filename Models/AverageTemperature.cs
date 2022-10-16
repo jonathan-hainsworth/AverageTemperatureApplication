@@ -9,6 +9,5 @@
         public DateOnly EndDay { get; set; }
 
         public bool isSuccessfull;
-        public bool isRequestLimitReached;
     }
 }

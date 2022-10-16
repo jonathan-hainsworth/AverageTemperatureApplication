@@ -11,7 +11,7 @@ namespace AverageTemperatureApplication.DAL.Impementations
             throw new NotImplementedException();
         }
 
-        public void Task<CacheAverageTemperature>(AverageTemperature averageTemperature)
+        public async void CacheAverageTemperature(AverageTemperature averageTemperature)
         {
             throw new NotImplementedException();
         }

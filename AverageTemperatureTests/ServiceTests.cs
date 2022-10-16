@@ -28,23 +28,23 @@ namespace AverageTemperatureTests
             //Arrange
             double latitude = 55.9486;
             double longitude = 3.1999;
-            DateOnly dateOnly = new DateOnly();
+            DateOnly endDate = new DateOnly(2022, 10, 15);
+            DateOnly startDate = new DateOnly(2022, 10, 10);
 
-            var cacheResponse = new AverageTemperature
+            var cachedAverageTemperature = new AverageTemperature
             {
                 Temperature = 5.5,
                 Latitude = latitude,
                 Longitude = longitude,
-                StartDay = DateOnly.FromDateTime(new DateTime()),
-                EndDay = DateOnly.FromDateTime(new DateTime().AddDays(-5)),
-                isRequestLimitReached = false,
+                StartDay = startDate,
+                EndDay = endDate,
                 isSuccessfull = true
             };
 
             _averageTemperateCache.Setup(x => x.GetAverageTemperature(
                 It.IsAny<double>(),
                 It.IsAny<double>(),
-                It.IsAny<DateOnly>())).Returns(Task.FromResult(cacheResponse));
+                It.IsAny<DateOnly>())).ReturnsAsync(cachedAverageTemperature);
 
             var mockInstance = new AverageTemperatureService(
                 _averageTemperateCache.Object,
@@ -54,18 +54,19 @@ namespace AverageTemperatureTests
             var result = mockInstance.GetAverageTemperature(latitude, longitude);
 
             //Act
-            Debug.Assert(result.Result.Temperature == 5.5);
+            Assert.IsTrue(result.Result.Temperature == (double) 5.5);
             Debug.Assert(result.Result.Latitude == latitude);
             Debug.Assert(result.Result.Longitude == longitude);
         }
 
         [Test]
-        public void GetAverageTemperatureFromDataSourceA()
+        public void GetAverageTemperatureFromDataSource()
         {
             //Arrange
             double latitude = 55.9486;
             double longitude = 3.1999;
-            DateOnly dateOnly = new DateOnly();
+            DateOnly endDate = new DateOnly(2022, 10, 15);
+            DateOnly startDate = new DateOnly(2022, 10, 10);
 
             // cache
             var cacheResponse = new AverageTemperature
@@ -75,7 +76,6 @@ namespace AverageTemperatureTests
                 Longitude = longitude,
                 StartDay = DateOnly.FromDateTime(new DateTime()),
                 EndDay = DateOnly.FromDateTime(new DateTime().AddDays(-5)),
-                isRequestLimitReached = false,
                 isSuccessfull = false
             };
             _averageTemperateCache.Setup(x => x.GetAverageTemperature(
@@ -91,7 +91,6 @@ namespace AverageTemperatureTests
                 Longitude = longitude,
                 StartDay = DateOnly.FromDateTime(new DateTime()),
                 EndDay = DateOnly.FromDateTime(new DateTime().AddDays(-5)),
-                isRequestLimitReached = false,
                 isSuccessfull = true
             };
             _averageTemperatureSource.Setup(x => x.GetAverageTemperature(
@@ -112,5 +111,20 @@ namespace AverageTemperatureTests
             Debug.Assert(result.Result.Latitude == latitude);
             Debug.Assert(result.Result.Longitude == longitude);
         }
+
+        // note: this should be private
+        /*[Test]
+        public void getDateOnlyNowTest()
+        {
+            //Arrange
+            var instance = new AverageTemperatureService(
+                _averageTemperateCache.Object,
+                _averageTemperatureSource.Object);
+            //Act
+            DateOnly dateOnly = instance.getDateOnlyNow();
+            //Assert
+            Console.WriteLine(dateOnly);
+            Console.WriteLine(dateOnly);
+        }*/
     }
 }

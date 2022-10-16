@@ -15,23 +15,23 @@ namespace AverageTemperatureTests
             double latitude = 55.9486;
             double longitude = 3.1999;
             DateOnly endDate = new DateOnly(2022,10,15);
+            DateOnly startDate = new DateOnly(2022, 10, 10);
 
             var DalResponse = new AverageTemperature
             {
                 Temperature = 5.5,
                 Latitude = latitude,
                 Longitude = longitude,
-                StartDay = DateOnly.FromDateTime(new DateTime()),
-                EndDay = DateOnly.FromDateTime(new DateTime().AddDays(-5)),
+                StartDay = startDate,
+                EndDay = endDate,
                 isSuccessfull = true,
-                isRequestLimitReached = false
             };
 
             // Assert
             var result = new AverageTemperateCache().GetAverageTemperature(latitude, longitude, endDate);
 
             // Act
-            Debug.Assert(false);
+            Debug.Assert(result.Result.Temperature==5.5);
         }
 
         [Test]
@@ -50,7 +50,6 @@ namespace AverageTemperatureTests
                 StartDay = DateOnly.FromDateTime(new DateTime()),
                 EndDay = DateOnly.FromDateTime(new DateTime().AddDays(-5)),
                 isSuccessfull = false,
-                isRequestLimitReached = false
             };
 
             // Assert

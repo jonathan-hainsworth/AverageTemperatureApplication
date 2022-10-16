@@ -24,7 +24,6 @@ namespace AverageTemperatureTests
                 StartDay = DateOnly.FromDateTime(new DateTime()),
                 EndDay = DateOnly.FromDateTime(new DateTime().AddDays(-5)),
                 isSuccessfull = true,
-                isRequestLimitReached = false
             };
 
             // Assert
@@ -50,7 +49,6 @@ namespace AverageTemperatureTests
                 StartDay = DateOnly.FromDateTime(new DateTime()),
                 EndDay = DateOnly.FromDateTime(new DateTime().AddDays(-5)),
                 isSuccessfull = false,
-                isRequestLimitReached = false
             };
 
             // Assert

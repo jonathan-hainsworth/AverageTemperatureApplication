@@ -18,7 +18,16 @@ namespace AverageTemperatureApplication.Controllers
         [HttpGet(Name = "GetTemperatureLastFiveDays")]
         public ActionResult<AverageTemperatureResponse> Get(double latitude, double longitude)
         {
-            return Ok(_averageTemperatureService.GetAverageTemperature(latitude, longitude));
+            var averageTemperature = _averageTemperatureService.GetAverageTemperature(latitude, longitude);
+
+            if(averageTemperature != null)
+            {
+                return Ok(averageTemperature);
+            }
+            else
+            {
+                return StatusCode(500);
+            }
         }
     }
 }
